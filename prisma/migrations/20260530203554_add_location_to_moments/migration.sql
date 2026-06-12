@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Moment" ADD COLUMN     "lat" DOUBLE PRECISION,
+ADD COLUMN     "lng" DOUBLE PRECISION,
+ADD COLUMN     "locationMode" TEXT;

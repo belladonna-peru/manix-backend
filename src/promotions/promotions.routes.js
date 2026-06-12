@@ -1,0 +1,11 @@
+import { Router } from "express";
+import { authMiddleware } from "../middleware/auth.middleware.js";
+import { create, mine, active, toggle, remove, validate } from "./promotions.controller.js";
+const router = Router();
+router.post("/",              authMiddleware, create);
+router.get("/mine",           authMiddleware, mine);
+router.get("/active/:businessId", authMiddleware, active);
+router.patch("/:id/toggle",   authMiddleware, toggle);
+router.delete("/:id",         authMiddleware, remove);
+router.post("/validate",      authMiddleware, validate);
+export default router;
