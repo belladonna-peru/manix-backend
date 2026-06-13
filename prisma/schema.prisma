@@ -49,6 +49,7 @@ model User {
   streams              Stream[]        @relation("UserStreams")
   events               StreamEvent[]   @relation("UserEvents")
   wallet               Wallet?
+  pushToken String?
 }
 
 model Moment {
