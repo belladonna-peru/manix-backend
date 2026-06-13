@@ -3,9 +3,10 @@ import jwt from "jsonwebtoken";
 import prisma from "../config/prisma.js";
 
 const createToken = (user) => {
+  if (!process.env.JWT_SECRET) throw new Error("JWT_SECRET no configurado");
   return jwt.sign(
     { id: user.id, username: user.username, email: user.email },
-    process.env.JWT_SECRET || "manix_secret_dev",
+    process.env.JWT_SECRET,
     { expiresIn: "7d" }
   );
 };
@@ -49,7 +50,6 @@ export const loginUser = async ({ email, password }) => {
   const validPassword = await bcrypt.compare(password, user.password);
   if (!validPassword) throw new Error("Credenciales incorrectas");
 
-  // Buscar negocio si es business
   let business = null;
   if (user.accountType === "business") {
     business = await prisma.business.findFirst({
@@ -59,19 +59,16 @@ export const loginUser = async ({ email, password }) => {
   }
 
   const safeUser = {
-    id:             user.id,
-    username:       user.username,
-    email:          user.email,
-    avatar:         user.avatar,
-    vibe:           user.vibe,
-    bio:            user.bio,
-    accountType:    user.accountType || "normal",
-    isOnline:       user.isOnline,
-    zoneName:       user.zoneName,
-    locationMode:   user.locationMode,
-    followersCount: user.followersCount,
-    followingCount: user.followingCount,
-    isStreaming:    user.isStreaming,
+    id:           user.id,
+    username:     user.username,
+    email:        user.email,
+    avatar:       user.avatar,
+    vibe:         user.vibe,
+    bio:          user.bio,
+    accountType:  user.accountType || "normal",
+    isOnline:     user.isOnline,
+    zoneName:     user.zoneName,
+    locationMode: user.locationMode,
     business,
   };
 
