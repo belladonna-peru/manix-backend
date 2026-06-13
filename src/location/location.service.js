@@ -1,13 +1,16 @@
 import prisma from "../config/prisma.js";
 
 // Actualizar ubicación del usuario en tiempo real
-export const updateLocation = async ({ userId, lat, lng, locationMode }) => {
+export const updateLocation = async ({ userId, lat, lng, liveLat, liveLng, locationMode, zoneName }) => {
+  const finalLat = liveLat ?? lat;
+  const finalLng = liveLng ?? lng;
   return prisma.user.update({
     where: { id: userId },
     data: {
-      liveLat: lat ? parseFloat(lat) : null,
-      liveLng: lng ? parseFloat(lng) : null,
+      liveLat: finalLat ? parseFloat(finalLat) : null,
+      liveLng: finalLng ? parseFloat(finalLng) : null,
       locationMode: locationMode || "approximate",
+      zoneName: zoneName || "Zona activa",
       isOnline: true,
       lastSeen: new Date(),
     },
