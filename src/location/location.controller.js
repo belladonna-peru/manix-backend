@@ -28,3 +28,20 @@ export const changeMode = async (req, res) => {
     res.json(result);
   } catch (e) { res.status(400).json({ message: e.message }); }
 };
+
+export const updateLocation = async ({ userId, lat, lng, liveLat, liveLng, locationMode, zoneName }) => {
+  const finalLat = liveLat ?? lat;
+  const finalLng = liveLng ?? lng;
+  return prisma.user.update({
+    where: { id: userId },
+    data: {
+      liveLat: finalLat ? parseFloat(finalLat) : null,
+      liveLng: finalLng ? parseFloat(finalLng) : null,
+      locationMode: locationMode || "approximate",
+      zoneName: zoneName || "Zona activa",
+      isOnline: true,
+      lastSeen: new Date(),
+    },
+    select: { id: true, liveLat: true, liveLng: true, locationMode: true },
+  });
+};
