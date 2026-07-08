@@ -47,13 +47,17 @@ export const initSocket = (io) => {
         zoneName,
         locationMode,
         lastLocationUpdate: new Date(),
+        lastSeen: new Date(),
+        isOnline: true,
       },
     });
 
+    // 🔒 Privacidad: en modo aproximado, el broadcast sale redondeado (~1 km)
+    const approx = locationMode === "approximate";
     io.emit("location:updated", {
       userId,
-      liveLat,
-      liveLng,
+      liveLat: approx && liveLat != null ? Number(Number(liveLat).toFixed(2)) : liveLat,
+      liveLng: approx && liveLng != null ? Number(Number(liveLng).toFixed(2)) : liveLng,
       zoneName,
       locationMode,
     });
