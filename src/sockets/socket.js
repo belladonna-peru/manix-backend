@@ -28,44 +28,66 @@ export const initSocket = (io) => {
     });
 
     socket.on("location:update", async (payload) => {
-  try {
-    const {
-      userId,
-      liveLat,
-      liveLng,
-      zoneName,
-      locationMode,
-    } = payload;
+      try {
+        const {
+          userId,
+          liveLat,
+          liveLng,
+          zoneName,
+          locationMode,
+        } = payload;
 
-    await prisma.user.update({
-      where: {
-        id: userId,
-      },
-      data: {
-        liveLat,
-        liveLng,
-        zoneName,
-        locationMode,
-        lastLocationUpdate: new Date(),
-        lastSeen: new Date(),
-        isOnline: true,
-      },
+        await prisma.user.update({
+          where: {
+            id: userId,
+          },
+          data: {
+            liveLat,
+            liveLng,
+            zoneName,
+            locationMode,
+            lastLocationUpdate: new Date(),
+            lastSeen: new Date(),
+            isOnline: true,
+          },
+        });
+
+        // 🔒 Privacidad: en modo aproximado, el broadcast sale redondeado (~1 km)
+        const approx = locationMode === "approximate";
+        const eventPayload = {
+          userId,
+          liveLat: approx && liveLat != null ? Number(Number(liveLat).toFixed(2)) : liveLat,
+          liveLng: approx && liveLng != null ? Number(Number(liveLng).toFixed(2)) : liveLng,
+          zoneName,
+          locationMode,
+        };
+
+        // 🔒 FIX PRIVACIDAD: antes era io.emit() global → TODOS los conectados
+        // recibían tus coordenadas. Ahora la posición viaja SOLO a los sockets
+        // de los usuarios con quienes compartiste ubicación (share vigente).
+        const shares = await prisma.locationShare.findMany({
+          where: {
+            ownerId: userId,
+            isActive: true,
+            OR: [{ expiresAt: null }, { expiresAt: { gt: new Date() } }],
+          },
+          select: {
+            friend: { select: { socketId: true } },
+          },
+        });
+
+        for (const s of shares) {
+          if (s.friend?.socketId) {
+            io.to(s.friend.socketId).emit("location:updated", eventPayload);
+          }
+        }
+        // Eco al propio emisor (útil para depurar y para múltiples dispositivos)
+        socket.emit("location:updated", eventPayload);
+
+      } catch (error) {
+        console.log(error);
+      }
     });
-
-    // 🔒 Privacidad: en modo aproximado, el broadcast sale redondeado (~1 km)
-    const approx = locationMode === "approximate";
-    io.emit("location:updated", {
-      userId,
-      liveLat: approx && liveLat != null ? Number(Number(liveLat).toFixed(2)) : liveLat,
-      liveLng: approx && liveLng != null ? Number(Number(liveLng).toFixed(2)) : liveLng,
-      zoneName,
-      locationMode,
-    });
-
-  } catch (error) {
-    console.log(error);
-  }
-});
 
     socket.on("join:conversation", (conversationId) => {
       socket.join(conversationId);
