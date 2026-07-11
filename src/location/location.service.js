@@ -9,8 +9,11 @@ import prisma from "../config/prisma.js";
 //  · Privacidad: en modo aproximado las coords salen redondeadas DEL SERVIDOR.
 // ═══════════════════════════════════════════════════════════════════════════════
 
-// Ventana de frescura: si no llega señal en este tiempo, el pin desaparece
-const SIGNAL_WINDOW_MS = 10 * 60 * 1000; // 10 minutos
+// Ventana de frescura: mostramos la ÚLTIMA ubicación conocida (estilo "Encontrar"
+// de Apple) — no desaparece a los 10 min. El frontend muestra "visto hace X" para
+// que se note si está fresca o vieja. Antes eran 10 min y por eso los amigos
+// "desaparecían" al cerrar la app aunque el permiso siguiera activo.
+const SIGNAL_WINDOW_MS = 24 * 60 * 60 * 1000; // 24 horas
 
 // Calcula expiresAt según la duración elegida
 const computeExpiry = (duration) => {
@@ -83,7 +86,8 @@ export const getActiveUsers = async (requesterId) => {
       id: { in: visibleIds, not: requesterId },
       // 🔑 SIN filtro isOnline: la presencia en el mapa depende de la SEÑAL,
       //    no del socket. Así no desapareces al cerrar la app.
-      locationMode: { not: "hidden" },
+      // 🔑 SIN filtro locationMode aquí: `{ not: "hidden" }` excluía a quienes
+      //    tienen locationMode NULL (semántica SQL de NULL). Se filtra en JS abajo.
       liveLat: { not: null },
       liveLng: { not: null },
       lastSeen: { gte: new Date(Date.now() - SIGNAL_WINDOW_MS) },
@@ -98,7 +102,9 @@ export const getActiveUsers = async (requesterId) => {
 
   // 🔒 Privacidad EN EL SERVIDOR: modo aproximado = coords redondeadas (~1 km).
   // El cliente NUNCA recibe la posición exacta de alguien en modo aproximado.
-  return users.map((u) => {
+  return users
+    .filter((u) => u.locationMode !== "hidden") // null cuenta como visible
+    .map((u) => {
     const approx = u.locationMode === "approximate";
     const lat = approx ? Number(Number(u.liveLat).toFixed(2)) : Number(u.liveLat);
     const lng = approx ? Number(Number(u.liveLng).toFixed(2)) : Number(u.liveLng);
