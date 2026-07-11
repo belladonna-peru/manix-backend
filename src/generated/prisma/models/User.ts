@@ -62,6 +62,7 @@ export type UserMinAggregateOutputType = {
   isVerified: boolean | null
   followersCount: number | null
   followingCount: number | null
+  pushToken: string | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -86,6 +87,7 @@ export type UserMaxAggregateOutputType = {
   isVerified: boolean | null
   followersCount: number | null
   followingCount: number | null
+  pushToken: string | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -110,6 +112,7 @@ export type UserCountAggregateOutputType = {
   isVerified: number
   followersCount: number
   followingCount: number
+  pushToken: number
   _all: number
 }
 
@@ -150,6 +153,7 @@ export type UserMinAggregateInputType = {
   isVerified?: true
   followersCount?: true
   followingCount?: true
+  pushToken?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -174,6 +178,7 @@ export type UserMaxAggregateInputType = {
   isVerified?: true
   followersCount?: true
   followingCount?: true
+  pushToken?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -198,6 +203,7 @@ export type UserCountAggregateInputType = {
   isVerified?: true
   followersCount?: true
   followingCount?: true
+  pushToken?: true
   _all?: true
 }
 
@@ -309,6 +315,7 @@ export type UserGroupByOutputType = {
   isVerified: boolean
   followersCount: number
   followingCount: number
+  pushToken: string | null
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -356,6 +363,7 @@ export type UserWhereInput = {
   isVerified?: Prisma.BoolFilter<"User"> | boolean
   followersCount?: Prisma.IntFilter<"User"> | number
   followingCount?: Prisma.IntFilter<"User"> | number
+  pushToken?: Prisma.StringNullableFilter<"User"> | string | null
   business?: Prisma.XOR<Prisma.BusinessNullableScalarRelationFilter, Prisma.BusinessWhereInput> | null
   comments?: Prisma.CommentListRelationFilter
   conversationsOne?: Prisma.ConversationListRelationFilter
@@ -400,6 +408,7 @@ export type UserOrderByWithRelationInput = {
   isVerified?: Prisma.SortOrder
   followersCount?: Prisma.SortOrder
   followingCount?: Prisma.SortOrder
+  pushToken?: Prisma.SortOrderInput | Prisma.SortOrder
   business?: Prisma.BusinessOrderByWithRelationInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
   conversationsOne?: Prisma.ConversationOrderByRelationAggregateInput
@@ -447,6 +456,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   isVerified?: Prisma.BoolFilter<"User"> | boolean
   followersCount?: Prisma.IntFilter<"User"> | number
   followingCount?: Prisma.IntFilter<"User"> | number
+  pushToken?: Prisma.StringNullableFilter<"User"> | string | null
   business?: Prisma.XOR<Prisma.BusinessNullableScalarRelationFilter, Prisma.BusinessWhereInput> | null
   comments?: Prisma.CommentListRelationFilter
   conversationsOne?: Prisma.ConversationListRelationFilter
@@ -491,6 +501,7 @@ export type UserOrderByWithAggregationInput = {
   isVerified?: Prisma.SortOrder
   followersCount?: Prisma.SortOrder
   followingCount?: Prisma.SortOrder
+  pushToken?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -523,6 +534,7 @@ export type UserScalarWhereWithAggregatesInput = {
   isVerified?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   followersCount?: Prisma.IntWithAggregatesFilter<"User"> | number
   followingCount?: Prisma.IntWithAggregatesFilter<"User"> | number
+  pushToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
 }
 
 export type UserCreateInput = {
@@ -547,6 +559,7 @@ export type UserCreateInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -591,6 +604,7 @@ export type UserUncheckedCreateInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -635,6 +649,7 @@ export type UserUpdateInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -679,6 +694,7 @@ export type UserUncheckedUpdateInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -723,6 +739,7 @@ export type UserCreateManyInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
 }
 
 export type UserUpdateManyMutationInput = {
@@ -747,6 +764,7 @@ export type UserUpdateManyMutationInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -771,6 +789,7 @@ export type UserUncheckedUpdateManyInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -795,6 +814,7 @@ export type UserCountOrderByAggregateInput = {
   isVerified?: Prisma.SortOrder
   followersCount?: Prisma.SortOrder
   followingCount?: Prisma.SortOrder
+  pushToken?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
@@ -826,6 +846,7 @@ export type UserMaxOrderByAggregateInput = {
   isVerified?: Prisma.SortOrder
   followersCount?: Prisma.SortOrder
   followingCount?: Prisma.SortOrder
+  pushToken?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -850,6 +871,7 @@ export type UserMinOrderByAggregateInput = {
   isVerified?: Prisma.SortOrder
   followersCount?: Prisma.SortOrder
   followingCount?: Prisma.SortOrder
+  pushToken?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
@@ -1202,6 +1224,7 @@ export type UserCreateWithoutMomentsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -1245,6 +1268,7 @@ export type UserUncheckedCreateWithoutMomentsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -1304,6 +1328,7 @@ export type UserUpdateWithoutMomentsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -1347,6 +1372,7 @@ export type UserUncheckedUpdateWithoutMomentsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -1390,6 +1416,7 @@ export type UserCreateWithoutReactionsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -1433,6 +1460,7 @@ export type UserUncheckedCreateWithoutReactionsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -1492,6 +1520,7 @@ export type UserUpdateWithoutReactionsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -1535,6 +1564,7 @@ export type UserUncheckedUpdateWithoutReactionsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -1578,6 +1608,7 @@ export type UserCreateWithoutCommentsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
   conversationsTwo?: Prisma.ConversationCreateNestedManyWithoutUserTwoInput
@@ -1621,6 +1652,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
   conversationsTwo?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserTwoInput
@@ -1680,6 +1712,7 @@ export type UserUpdateWithoutCommentsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
   conversationsTwo?: Prisma.ConversationUpdateManyWithoutUserTwoNestedInput
@@ -1723,6 +1756,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
   conversationsTwo?: Prisma.ConversationUncheckedUpdateManyWithoutUserTwoNestedInput
@@ -1766,6 +1800,7 @@ export type UserCreateWithoutReceivedRequestsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -1809,6 +1844,7 @@ export type UserUncheckedCreateWithoutReceivedRequestsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -1857,6 +1893,7 @@ export type UserCreateWithoutSentRequestsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -1900,6 +1937,7 @@ export type UserUncheckedCreateWithoutSentRequestsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -1959,6 +1997,7 @@ export type UserUpdateWithoutReceivedRequestsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -2002,6 +2041,7 @@ export type UserUncheckedUpdateWithoutReceivedRequestsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -2056,6 +2096,7 @@ export type UserUpdateWithoutSentRequestsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -2099,6 +2140,7 @@ export type UserUncheckedUpdateWithoutSentRequestsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -2142,6 +2184,7 @@ export type UserCreateWithoutFriendshipsOneInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -2185,6 +2228,7 @@ export type UserUncheckedCreateWithoutFriendshipsOneInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -2233,6 +2277,7 @@ export type UserCreateWithoutFriendshipsTwoInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -2276,6 +2321,7 @@ export type UserUncheckedCreateWithoutFriendshipsTwoInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -2335,6 +2381,7 @@ export type UserUpdateWithoutFriendshipsOneInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -2378,6 +2425,7 @@ export type UserUncheckedUpdateWithoutFriendshipsOneInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -2432,6 +2480,7 @@ export type UserUpdateWithoutFriendshipsTwoInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -2475,6 +2524,7 @@ export type UserUncheckedUpdateWithoutFriendshipsTwoInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -2518,6 +2568,7 @@ export type UserCreateWithoutLocationSharesFriendInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -2561,6 +2612,7 @@ export type UserUncheckedCreateWithoutLocationSharesFriendInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -2609,6 +2661,7 @@ export type UserCreateWithoutLocationSharesOwnedInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -2652,6 +2705,7 @@ export type UserUncheckedCreateWithoutLocationSharesOwnedInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -2711,6 +2765,7 @@ export type UserUpdateWithoutLocationSharesFriendInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -2754,6 +2809,7 @@ export type UserUncheckedUpdateWithoutLocationSharesFriendInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -2808,6 +2864,7 @@ export type UserUpdateWithoutLocationSharesOwnedInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -2851,6 +2908,7 @@ export type UserUncheckedUpdateWithoutLocationSharesOwnedInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -2894,6 +2952,7 @@ export type UserCreateWithoutBusinessInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
   conversationsTwo?: Prisma.ConversationCreateNestedManyWithoutUserTwoInput
@@ -2937,6 +2996,7 @@ export type UserUncheckedCreateWithoutBusinessInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
   conversationsTwo?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserTwoInput
@@ -2996,6 +3056,7 @@ export type UserUpdateWithoutBusinessInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
   conversationsTwo?: Prisma.ConversationUpdateManyWithoutUserTwoNestedInput
@@ -3039,6 +3100,7 @@ export type UserUncheckedUpdateWithoutBusinessInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
   conversationsTwo?: Prisma.ConversationUncheckedUpdateManyWithoutUserTwoNestedInput
@@ -3082,6 +3144,7 @@ export type UserCreateWithoutConversationsOneInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsTwo?: Prisma.ConversationCreateNestedManyWithoutUserTwoInput
@@ -3125,6 +3188,7 @@ export type UserUncheckedCreateWithoutConversationsOneInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsTwo?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserTwoInput
@@ -3173,6 +3237,7 @@ export type UserCreateWithoutConversationsTwoInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -3216,6 +3281,7 @@ export type UserUncheckedCreateWithoutConversationsTwoInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -3275,6 +3341,7 @@ export type UserUpdateWithoutConversationsOneInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsTwo?: Prisma.ConversationUpdateManyWithoutUserTwoNestedInput
@@ -3318,6 +3385,7 @@ export type UserUncheckedUpdateWithoutConversationsOneInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsTwo?: Prisma.ConversationUncheckedUpdateManyWithoutUserTwoNestedInput
@@ -3372,6 +3440,7 @@ export type UserUpdateWithoutConversationsTwoInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -3415,6 +3484,7 @@ export type UserUncheckedUpdateWithoutConversationsTwoInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -3458,6 +3528,7 @@ export type UserCreateWithoutMessagesInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -3501,6 +3572,7 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -3560,6 +3632,7 @@ export type UserUpdateWithoutMessagesInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -3603,6 +3676,7 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -3646,6 +3720,7 @@ export type UserCreateWithoutFollowingInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -3689,6 +3764,7 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -3737,6 +3813,7 @@ export type UserCreateWithoutFollowersInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -3780,6 +3857,7 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -3839,6 +3917,7 @@ export type UserUpdateWithoutFollowingInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -3882,6 +3961,7 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -3936,6 +4016,7 @@ export type UserUpdateWithoutFollowersInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -3979,6 +4060,7 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -4022,6 +4104,7 @@ export type UserCreateWithoutOrdersInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -4065,6 +4148,7 @@ export type UserUncheckedCreateWithoutOrdersInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -4124,6 +4208,7 @@ export type UserUpdateWithoutOrdersInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -4167,6 +4252,7 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -4210,6 +4296,7 @@ export type UserCreateWithoutStreamsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -4253,6 +4340,7 @@ export type UserUncheckedCreateWithoutStreamsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -4312,6 +4400,7 @@ export type UserUpdateWithoutStreamsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -4355,6 +4444,7 @@ export type UserUncheckedUpdateWithoutStreamsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -4398,6 +4488,7 @@ export type UserCreateWithoutEventsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -4441,6 +4532,7 @@ export type UserUncheckedCreateWithoutEventsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -4500,6 +4592,7 @@ export type UserUpdateWithoutEventsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -4543,6 +4636,7 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -4586,6 +4680,7 @@ export type UserCreateWithoutReviewsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -4629,6 +4724,7 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -4688,6 +4784,7 @@ export type UserUpdateWithoutReviewsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -4731,6 +4828,7 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -4774,6 +4872,7 @@ export type UserCreateWithoutWalletInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
@@ -4817,6 +4916,7 @@ export type UserUncheckedCreateWithoutWalletInput = {
   isVerified?: boolean
   followersCount?: number
   followingCount?: number
+  pushToken?: string | null
   business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
@@ -4876,6 +4976,7 @@ export type UserUpdateWithoutWalletInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
@@ -4919,6 +5020,7 @@ export type UserUncheckedUpdateWithoutWalletInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   followersCount?: Prisma.IntFieldUpdateOperationsInput | number
   followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
@@ -5146,6 +5248,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   isVerified?: boolean
   followersCount?: boolean
   followingCount?: boolean
+  pushToken?: boolean
   business?: boolean | Prisma.User$businessArgs<ExtArgs>
   comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
   conversationsOne?: boolean | Prisma.User$conversationsOneArgs<ExtArgs>
@@ -5191,6 +5294,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   isVerified?: boolean
   followersCount?: boolean
   followingCount?: boolean
+  pushToken?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -5215,6 +5319,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   isVerified?: boolean
   followersCount?: boolean
   followingCount?: boolean
+  pushToken?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -5239,9 +5344,10 @@ export type UserSelectScalar = {
   isVerified?: boolean
   followersCount?: boolean
   followingCount?: boolean
+  pushToken?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "email" | "password" | "avatar" | "vibe" | "bio" | "createdAt" | "lastLocationUpdate" | "liveLat" | "liveLng" | "locationMode" | "zoneName" | "isOnline" | "lastSeen" | "socketId" | "accountType" | "businessPlan" | "isVerified" | "followersCount" | "followingCount", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "email" | "password" | "avatar" | "vibe" | "bio" | "createdAt" | "lastLocationUpdate" | "liveLat" | "liveLng" | "locationMode" | "zoneName" | "isOnline" | "lastSeen" | "socketId" | "accountType" | "businessPlan" | "isVerified" | "followersCount" | "followingCount" | "pushToken", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   business?: boolean | Prisma.User$businessArgs<ExtArgs>
   comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
@@ -5314,6 +5420,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     isVerified: boolean
     followersCount: number
     followingCount: number
+    pushToken: string | null
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -5778,6 +5885,7 @@ export interface UserFieldRefs {
   readonly isVerified: Prisma.FieldRef<"User", 'Boolean'>
   readonly followersCount: Prisma.FieldRef<"User", 'Int'>
   readonly followingCount: Prisma.FieldRef<"User", 'Int'>
+  readonly pushToken: Prisma.FieldRef<"User", 'String'>
 }
     
 

@@ -2038,7 +2038,8 @@ export const UserScalarFieldEnum = {
   businessPlan: 'businessPlan',
   isVerified: 'isVerified',
   followersCount: 'followersCount',
-  followingCount: 'followingCount'
+  followingCount: 'followingCount',
+  pushToken: 'pushToken'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -2164,6 +2165,11 @@ export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[k
 export const MessageScalarFieldEnum = {
   id: 'id',
   content: 'content',
+  type: 'type',
+  mediaUrl: 'mediaUrl',
+  duration: 'duration',
+  lat: 'lat',
+  lng: 'lng',
   createdAt: 'createdAt',
   readAt: 'readAt',
   conversationId: 'conversationId',

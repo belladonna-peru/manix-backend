@@ -31,6 +31,19 @@ export const uploadAudio = multer({
   },
 });
 
+// ── Multer para video (reels) ────────────────────────────────────────────────
+export const uploadVideo = multer({
+  storage,
+  limits: { fileSize: 60 * 1024 * 1024 }, // 60MB máximo
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype.startsWith("video/") || file.mimetype === "application/octet-stream") {
+      cb(null, true);
+    } else {
+      cb(new Error("Solo se permiten videos"));
+    }
+  },
+});
+
 // ── Helper: sube buffer a Cloudinary ─────────────────────────────────────────
 export const uploadToCloudinary = (buffer, folder, options = {}) => {
   return new Promise((resolve, reject) => {

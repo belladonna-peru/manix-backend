@@ -48,6 +48,7 @@ model User {
   reviews              Review[]        @relation("UserReviews")
   streams              Stream[]        @relation("UserStreams")
   events               StreamEvent[]   @relation("UserEvents")
+  reels                Reel[]
   wallet               Wallet?
   pushToken String?
 }
@@ -353,4 +354,29 @@ model WalletTransaction {
   status        String   @default("completed")
   referenceId   String?
   referenceType String?
+}
+
+model Reel {
+  id            String     @id @default(cuid())
+  createdAt     DateTime   @default(now())
+  userId        String
+  videoUrl      String
+  thumbnailUrl  String?
+  title         String     @default("")
+  duration      Int?
+  views         Int        @default(0)
+  likesCount    Int        @default(0)
+  commentsCount Int        @default(0)
+  user          User       @relation(fields: [userId], references: [id])
+  likes         ReelLike[]
+}
+
+model ReelLike {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  reelId    String
+  userId    String
+  reel      Reel     @relation(fields: [reelId], references: [id], onDelete: Cascade)
+
+  @@unique([reelId, userId])
 }
