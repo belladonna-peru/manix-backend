@@ -17,6 +17,20 @@ export const upload = multer({
   },
 });
 
+// ── Multer para audio (notas de voz) ─────────────────────────────────────────
+export const uploadAudio = multer({
+  storage,
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB máximo
+  fileFilter: (req, file, cb) => {
+    // Expo graba en m4a/aac; aceptamos los mimetypes comunes de audio
+    if (file.mimetype.startsWith("audio/") || file.mimetype === "application/octet-stream") {
+      cb(null, true);
+    } else {
+      cb(new Error("Solo se permiten notas de voz (audio)"));
+    }
+  },
+});
+
 // ── Helper: sube buffer a Cloudinary ─────────────────────────────────────────
 export const uploadToCloudinary = (buffer, folder, options = {}) => {
   return new Promise((resolve, reject) => {

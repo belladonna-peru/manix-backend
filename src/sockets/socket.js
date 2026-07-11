@@ -101,6 +101,11 @@ export const initSocket = (io) => {
       io.to(conversationId).emit("message:new", message);
     });
 
+    // Confirmación de lectura: aviso a los demás de la conversación (el emisor)
+    socket.on("messages:read", ({ conversationId }) => {
+      socket.to(conversationId).emit("messages:read", { conversationId });
+    });
+
     socket.on("typing:start", ({ conversationId, user }) => {
       socket.to(conversationId).emit("typing:start", user);
     });

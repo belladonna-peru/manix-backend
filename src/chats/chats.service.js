@@ -72,6 +72,12 @@ export const getMessages = async ({ conversationId, userId }) => {
     throw new Error("Conversación no encontrada");
   }
 
+  // Marcar como leídos los mensajes que me envió el otro (confirmación de lectura)
+  await prisma.message.updateMany({
+    where: { conversationId, senderId: { not: userId }, readAt: null },
+    data: { readAt: new Date() },
+  });
+
   return prisma.message.findMany({
     where: { conversationId },
     include: {
@@ -81,9 +87,16 @@ export const getMessages = async ({ conversationId, userId }) => {
   });
 };
 
-export const createMessage = async ({ conversationId, senderId, content }) => {
-  if (!content || content.trim().length < 1) {
+export const createMessage = async ({ conversationId, senderId, content, type = "text", mediaUrl = null, duration = null, lat = null, lng = null }) => {
+  // El texto no puede ir vacío; imagen/audio/ubicación no necesitan texto.
+  if (type === "text" && (!content || content.trim().length < 1)) {
     throw new Error("El mensaje no puede estar vacío");
+  }
+  if ((type === "image" || type === "audio") && !mediaUrl) {
+    throw new Error("Falta el archivo");
+  }
+  if (type === "location" && (lat == null || lng == null)) {
+    throw new Error("Falta la ubicación");
   }
 
   const conversation = await prisma.conversation.findFirst({
@@ -101,7 +114,12 @@ export const createMessage = async ({ conversationId, senderId, content }) => {
     data: {
       conversationId,
       senderId,
-      content: content.trim(),
+      content: (content || "").trim(),
+      type,
+      mediaUrl,
+      duration: duration != null ? parseInt(duration, 10) : null,
+      lat: lat != null ? parseFloat(lat) : null,
+      lng: lng != null ? parseFloat(lng) : null,
     },
     include: {
       sender: { select: userSelect },

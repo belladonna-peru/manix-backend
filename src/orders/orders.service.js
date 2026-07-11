@@ -59,7 +59,7 @@ export const getMyOrders = async (buyerId) => {
     where: { buyerId },
     include: {
       items: { include: { product: { select: { name: true, imageUrl: true } } } },
-      business: { select: { id: true, name: true } },
+      business: { select: { id: true, name: true, ownerId: true } },
     },
     orderBy: { createdAt: "desc" },
   });

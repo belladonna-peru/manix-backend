@@ -5,7 +5,21 @@ import {
   createMessage,
 } from "./chats.service.js";
 import { notifyNewMessage } from "../notifications/notifications.service.js";
+import { uploadToCloudinary } from "../middleware/upload.middleware.js";
 import prisma from "../config/prisma.js";
+
+// ── Subir nota de voz a Cloudinary (audio se sube como resource_type "video") ──
+export const uploadChatAudio = async (req, res) => {
+  try {
+    if (!req.file) return res.status(400).json({ message: "No se recibió el audio" });
+    const result = await uploadToCloudinary(req.file.buffer, "chat-audio", {
+      resource_type: "video", // Cloudinary maneja audio bajo el tipo "video"
+    });
+    res.status(201).json({ url: result.secure_url, duration: Math.round(result.duration || 0) });
+  } catch (error) {
+    res.status(400).json({ message: error.message || "No se pudo subir la nota de voz" });
+  }
+};
 
 export const openConversation = async (req, res) => {
   try {
@@ -45,6 +59,11 @@ export const sendMessage = async (req, res) => {
       conversationId: req.params.conversationId,
       senderId:       req.user.id,
       content:        req.body.content,
+      type:           req.body.type,
+      mediaUrl:       req.body.mediaUrl,
+      duration:       req.body.duration,
+      lat:            req.body.lat,
+      lng:            req.body.lng,
     });
     res.status(201).json(message);
 
