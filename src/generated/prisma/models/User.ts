@@ -383,6 +383,7 @@ export type UserWhereInput = {
   reviews?: Prisma.ReviewListRelationFilter
   streams?: Prisma.StreamListRelationFilter
   events?: Prisma.StreamEventListRelationFilter
+  reels?: Prisma.ReelListRelationFilter
   wallet?: Prisma.XOR<Prisma.WalletNullableScalarRelationFilter, Prisma.WalletWhereInput> | null
 }
 
@@ -428,6 +429,7 @@ export type UserOrderByWithRelationInput = {
   reviews?: Prisma.ReviewOrderByRelationAggregateInput
   streams?: Prisma.StreamOrderByRelationAggregateInput
   events?: Prisma.StreamEventOrderByRelationAggregateInput
+  reels?: Prisma.ReelOrderByRelationAggregateInput
   wallet?: Prisma.WalletOrderByWithRelationInput
 }
 
@@ -476,6 +478,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   reviews?: Prisma.ReviewListRelationFilter
   streams?: Prisma.StreamListRelationFilter
   events?: Prisma.StreamEventListRelationFilter
+  reels?: Prisma.ReelListRelationFilter
   wallet?: Prisma.XOR<Prisma.WalletNullableScalarRelationFilter, Prisma.WalletWhereInput> | null
 }, "id" | "username" | "email">
 
@@ -579,6 +582,7 @@ export type UserCreateInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -624,6 +628,7 @@ export type UserUncheckedCreateInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -669,6 +674,7 @@ export type UserUpdateInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -714,6 +720,7 @@ export type UserUncheckedUpdateInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -1202,6 +1209,20 @@ export type UserUpdateOneRequiredWithoutWalletNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutWalletInput, Prisma.UserUpdateWithoutWalletInput>, Prisma.UserUncheckedUpdateWithoutWalletInput>
 }
 
+export type UserCreateNestedOneWithoutReelsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReelsInput, Prisma.UserUncheckedCreateWithoutReelsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReelsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutReelsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReelsInput, Prisma.UserUncheckedCreateWithoutReelsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReelsInput
+  upsert?: Prisma.UserUpsertWithoutReelsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReelsInput, Prisma.UserUpdateWithoutReelsInput>, Prisma.UserUncheckedUpdateWithoutReelsInput>
+}
+
 export type UserCreateWithoutMomentsInput = {
   id?: string
   username: string
@@ -1243,6 +1264,7 @@ export type UserCreateWithoutMomentsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -1287,6 +1309,7 @@ export type UserUncheckedCreateWithoutMomentsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -1347,6 +1370,7 @@ export type UserUpdateWithoutMomentsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -1391,6 +1415,7 @@ export type UserUncheckedUpdateWithoutMomentsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -1435,6 +1460,7 @@ export type UserCreateWithoutReactionsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -1479,6 +1505,7 @@ export type UserUncheckedCreateWithoutReactionsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -1539,6 +1566,7 @@ export type UserUpdateWithoutReactionsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -1583,6 +1611,7 @@ export type UserUncheckedUpdateWithoutReactionsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -1627,6 +1656,7 @@ export type UserCreateWithoutCommentsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -1671,6 +1701,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -1731,6 +1762,7 @@ export type UserUpdateWithoutCommentsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -1775,6 +1807,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -1819,6 +1852,7 @@ export type UserCreateWithoutReceivedRequestsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -1863,6 +1897,7 @@ export type UserUncheckedCreateWithoutReceivedRequestsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -1912,6 +1947,7 @@ export type UserCreateWithoutSentRequestsInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -1956,6 +1992,7 @@ export type UserUncheckedCreateWithoutSentRequestsInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -2016,6 +2053,7 @@ export type UserUpdateWithoutReceivedRequestsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -2060,6 +2098,7 @@ export type UserUncheckedUpdateWithoutReceivedRequestsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -2115,6 +2154,7 @@ export type UserUpdateWithoutSentRequestsInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -2159,6 +2199,7 @@ export type UserUncheckedUpdateWithoutSentRequestsInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -2203,6 +2244,7 @@ export type UserCreateWithoutFriendshipsOneInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -2247,6 +2289,7 @@ export type UserUncheckedCreateWithoutFriendshipsOneInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -2296,6 +2339,7 @@ export type UserCreateWithoutFriendshipsTwoInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -2340,6 +2384,7 @@ export type UserUncheckedCreateWithoutFriendshipsTwoInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -2400,6 +2445,7 @@ export type UserUpdateWithoutFriendshipsOneInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -2444,6 +2490,7 @@ export type UserUncheckedUpdateWithoutFriendshipsOneInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -2499,6 +2546,7 @@ export type UserUpdateWithoutFriendshipsTwoInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -2543,6 +2591,7 @@ export type UserUncheckedUpdateWithoutFriendshipsTwoInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -2587,6 +2636,7 @@ export type UserCreateWithoutLocationSharesFriendInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -2631,6 +2681,7 @@ export type UserUncheckedCreateWithoutLocationSharesFriendInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -2680,6 +2731,7 @@ export type UserCreateWithoutLocationSharesOwnedInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -2724,6 +2776,7 @@ export type UserUncheckedCreateWithoutLocationSharesOwnedInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -2784,6 +2837,7 @@ export type UserUpdateWithoutLocationSharesFriendInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -2828,6 +2882,7 @@ export type UserUncheckedUpdateWithoutLocationSharesFriendInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -2883,6 +2938,7 @@ export type UserUpdateWithoutLocationSharesOwnedInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -2927,6 +2983,7 @@ export type UserUncheckedUpdateWithoutLocationSharesOwnedInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -2971,6 +3028,7 @@ export type UserCreateWithoutBusinessInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -3015,6 +3073,7 @@ export type UserUncheckedCreateWithoutBusinessInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -3075,6 +3134,7 @@ export type UserUpdateWithoutBusinessInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -3119,6 +3179,7 @@ export type UserUncheckedUpdateWithoutBusinessInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -3163,6 +3224,7 @@ export type UserCreateWithoutConversationsOneInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -3207,6 +3269,7 @@ export type UserUncheckedCreateWithoutConversationsOneInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -3256,6 +3319,7 @@ export type UserCreateWithoutConversationsTwoInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -3300,6 +3364,7 @@ export type UserUncheckedCreateWithoutConversationsTwoInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -3360,6 +3425,7 @@ export type UserUpdateWithoutConversationsOneInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -3404,6 +3470,7 @@ export type UserUncheckedUpdateWithoutConversationsOneInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -3459,6 +3526,7 @@ export type UserUpdateWithoutConversationsTwoInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -3503,6 +3571,7 @@ export type UserUncheckedUpdateWithoutConversationsTwoInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -3547,6 +3616,7 @@ export type UserCreateWithoutMessagesInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -3591,6 +3661,7 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -3651,6 +3722,7 @@ export type UserUpdateWithoutMessagesInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -3695,6 +3767,7 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -3739,6 +3812,7 @@ export type UserCreateWithoutFollowingInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -3783,6 +3857,7 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -3832,6 +3907,7 @@ export type UserCreateWithoutFollowersInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -3876,6 +3952,7 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -3936,6 +4013,7 @@ export type UserUpdateWithoutFollowingInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -3980,6 +4058,7 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -4035,6 +4114,7 @@ export type UserUpdateWithoutFollowersInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -4079,6 +4159,7 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -4123,6 +4204,7 @@ export type UserCreateWithoutOrdersInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -4167,6 +4249,7 @@ export type UserUncheckedCreateWithoutOrdersInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -4227,6 +4310,7 @@ export type UserUpdateWithoutOrdersInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -4271,6 +4355,7 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -4315,6 +4400,7 @@ export type UserCreateWithoutStreamsInput = {
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -4359,6 +4445,7 @@ export type UserUncheckedCreateWithoutStreamsInput = {
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -4419,6 +4506,7 @@ export type UserUpdateWithoutStreamsInput = {
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -4463,6 +4551,7 @@ export type UserUncheckedUpdateWithoutStreamsInput = {
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -4507,6 +4596,7 @@ export type UserCreateWithoutEventsInput = {
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -4551,6 +4641,7 @@ export type UserUncheckedCreateWithoutEventsInput = {
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -4611,6 +4702,7 @@ export type UserUpdateWithoutEventsInput = {
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -4655,6 +4747,7 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -4699,6 +4792,7 @@ export type UserCreateWithoutReviewsInput = {
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
@@ -4743,6 +4837,7 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -4803,6 +4898,7 @@ export type UserUpdateWithoutReviewsInput = {
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
@@ -4847,6 +4943,7 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -4892,6 +4989,7 @@ export type UserCreateWithoutWalletInput = {
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutWalletInput = {
@@ -4936,6 +5034,7 @@ export type UserUncheckedCreateWithoutWalletInput = {
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
   events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  reels?: Prisma.ReelUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutWalletInput = {
@@ -4996,6 +5095,7 @@ export type UserUpdateWithoutWalletInput = {
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWalletInput = {
@@ -5040,6 +5140,203 @@ export type UserUncheckedUpdateWithoutWalletInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
   events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  reels?: Prisma.ReelUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutReelsInput = {
+  id?: string
+  username: string
+  email: string
+  password: string
+  avatar?: string | null
+  vibe?: string | null
+  bio?: string | null
+  createdAt?: Date | string
+  lastLocationUpdate?: Date | string | null
+  liveLat?: number | null
+  liveLng?: number | null
+  locationMode?: string | null
+  zoneName?: string | null
+  isOnline?: boolean
+  lastSeen?: Date | string | null
+  socketId?: string | null
+  accountType?: string
+  businessPlan?: string | null
+  isVerified?: boolean
+  followersCount?: number
+  followingCount?: number
+  pushToken?: string | null
+  business?: Prisma.BusinessCreateNestedOneWithoutOwnerInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  conversationsOne?: Prisma.ConversationCreateNestedManyWithoutUserOneInput
+  conversationsTwo?: Prisma.ConversationCreateNestedManyWithoutUserTwoInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  receivedRequests?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  sentRequests?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendshipsOne?: Prisma.FriendshipCreateNestedManyWithoutUserOneInput
+  friendshipsTwo?: Prisma.FriendshipCreateNestedManyWithoutUserTwoInput
+  locationSharesFriend?: Prisma.LocationShareCreateNestedManyWithoutFriendInput
+  locationSharesOwned?: Prisma.LocationShareCreateNestedManyWithoutOwnerInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  moments?: Prisma.MomentCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBuyerInput
+  reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  streams?: Prisma.StreamCreateNestedManyWithoutUserInput
+  events?: Prisma.StreamEventCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutReelsInput = {
+  id?: string
+  username: string
+  email: string
+  password: string
+  avatar?: string | null
+  vibe?: string | null
+  bio?: string | null
+  createdAt?: Date | string
+  lastLocationUpdate?: Date | string | null
+  liveLat?: number | null
+  liveLng?: number | null
+  locationMode?: string | null
+  zoneName?: string | null
+  isOnline?: boolean
+  lastSeen?: Date | string | null
+  socketId?: string | null
+  accountType?: string
+  businessPlan?: string | null
+  isVerified?: boolean
+  followersCount?: number
+  followingCount?: number
+  pushToken?: string | null
+  business?: Prisma.BusinessUncheckedCreateNestedOneWithoutOwnerInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  conversationsOne?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserOneInput
+  conversationsTwo?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserTwoInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  receivedRequests?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  sentRequests?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendshipsOne?: Prisma.FriendshipUncheckedCreateNestedManyWithoutUserOneInput
+  friendshipsTwo?: Prisma.FriendshipUncheckedCreateNestedManyWithoutUserTwoInput
+  locationSharesFriend?: Prisma.LocationShareUncheckedCreateNestedManyWithoutFriendInput
+  locationSharesOwned?: Prisma.LocationShareUncheckedCreateNestedManyWithoutOwnerInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  moments?: Prisma.MomentUncheckedCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBuyerInput
+  reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  streams?: Prisma.StreamUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.StreamEventUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutReelsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutReelsInput, Prisma.UserUncheckedCreateWithoutReelsInput>
+}
+
+export type UserUpsertWithoutReelsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutReelsInput, Prisma.UserUncheckedUpdateWithoutReelsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutReelsInput, Prisma.UserUncheckedCreateWithoutReelsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutReelsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutReelsInput, Prisma.UserUncheckedUpdateWithoutReelsInput>
+}
+
+export type UserUpdateWithoutReelsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vibe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLocationUpdate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  liveLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  liveLng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  locationMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zoneName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastSeen?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socketId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accountType?: Prisma.StringFieldUpdateOperationsInput | string
+  businessPlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  followersCount?: Prisma.IntFieldUpdateOperationsInput | number
+  followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  business?: Prisma.BusinessUpdateOneWithoutOwnerNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  conversationsOne?: Prisma.ConversationUpdateManyWithoutUserOneNestedInput
+  conversationsTwo?: Prisma.ConversationUpdateManyWithoutUserTwoNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  receivedRequests?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  sentRequests?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendshipsOne?: Prisma.FriendshipUpdateManyWithoutUserOneNestedInput
+  friendshipsTwo?: Prisma.FriendshipUpdateManyWithoutUserTwoNestedInput
+  locationSharesFriend?: Prisma.LocationShareUpdateManyWithoutFriendNestedInput
+  locationSharesOwned?: Prisma.LocationShareUpdateManyWithoutOwnerNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  moments?: Prisma.MomentUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBuyerNestedInput
+  reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  streams?: Prisma.StreamUpdateManyWithoutUserNestedInput
+  events?: Prisma.StreamEventUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutReelsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vibe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLocationUpdate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  liveLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  liveLng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  locationMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zoneName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastSeen?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socketId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accountType?: Prisma.StringFieldUpdateOperationsInput | string
+  businessPlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  followersCount?: Prisma.IntFieldUpdateOperationsInput | number
+  followingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  business?: Prisma.BusinessUncheckedUpdateOneWithoutOwnerNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  conversationsOne?: Prisma.ConversationUncheckedUpdateManyWithoutUserOneNestedInput
+  conversationsTwo?: Prisma.ConversationUncheckedUpdateManyWithoutUserTwoNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  receivedRequests?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  sentRequests?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendshipsOne?: Prisma.FriendshipUncheckedUpdateManyWithoutUserOneNestedInput
+  friendshipsTwo?: Prisma.FriendshipUncheckedUpdateManyWithoutUserTwoNestedInput
+  locationSharesFriend?: Prisma.LocationShareUncheckedUpdateManyWithoutFriendNestedInput
+  locationSharesOwned?: Prisma.LocationShareUncheckedUpdateManyWithoutOwnerNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  moments?: Prisma.MomentUncheckedUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBuyerNestedInput
+  reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  streams?: Prisma.StreamUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.StreamEventUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
 
@@ -5066,6 +5363,7 @@ export type UserCountOutputType = {
   reviews: number
   streams: number
   events: number
+  reels: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -5087,6 +5385,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   reviews?: boolean | UserCountOutputTypeCountReviewsArgs
   streams?: boolean | UserCountOutputTypeCountStreamsArgs
   events?: boolean | UserCountOutputTypeCountEventsArgs
+  reels?: boolean | UserCountOutputTypeCountReelsArgs
 }
 
 /**
@@ -5225,6 +5524,13 @@ export type UserCountOutputTypeCountEventsArgs<ExtArgs extends runtime.Types.Ext
   where?: Prisma.StreamEventWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountReelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReelWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -5268,6 +5574,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   reviews?: boolean | Prisma.User$reviewsArgs<ExtArgs>
   streams?: boolean | Prisma.User$streamsArgs<ExtArgs>
   events?: boolean | Prisma.User$eventsArgs<ExtArgs>
+  reels?: boolean | Prisma.User$reelsArgs<ExtArgs>
   wallet?: boolean | Prisma.User$walletArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -5368,6 +5675,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   reviews?: boolean | Prisma.User$reviewsArgs<ExtArgs>
   streams?: boolean | Prisma.User$streamsArgs<ExtArgs>
   events?: boolean | Prisma.User$eventsArgs<ExtArgs>
+  reels?: boolean | Prisma.User$reelsArgs<ExtArgs>
   wallet?: boolean | Prisma.User$walletArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -5396,6 +5704,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     reviews: Prisma.$ReviewPayload<ExtArgs>[]
     streams: Prisma.$StreamPayload<ExtArgs>[]
     events: Prisma.$StreamEventPayload<ExtArgs>[]
+    reels: Prisma.$ReelPayload<ExtArgs>[]
     wallet: Prisma.$WalletPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -5834,6 +6143,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   reviews<T extends Prisma.User$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   streams<T extends Prisma.User$streamsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$streamsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StreamPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   events<T extends Prisma.User$eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StreamEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reels<T extends Prisma.User$reelsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reelsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   wallet<T extends Prisma.User$walletArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$walletArgs<ExtArgs>>): Prisma.Prisma__WalletClient<runtime.Types.Result.GetResult<Prisma.$WalletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -6727,6 +7037,30 @@ export type User$eventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   distinct?: Prisma.StreamEventScalarFieldEnum | Prisma.StreamEventScalarFieldEnum[]
+}
+
+/**
+ * User.reels
+ */
+export type User$reelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Reel
+   */
+  select?: Prisma.ReelSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Reel
+   */
+  omit?: Prisma.ReelOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReelInclude<ExtArgs> | null
+  where?: Prisma.ReelWhereInput
+  orderBy?: Prisma.ReelOrderByWithRelationInput | Prisma.ReelOrderByWithRelationInput[]
+  cursor?: Prisma.ReelWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ReelScalarFieldEnum | Prisma.ReelScalarFieldEnum[]
 }
 
 /**

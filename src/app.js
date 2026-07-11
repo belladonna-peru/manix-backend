@@ -21,6 +21,7 @@ import promotionsRoutes    from "./promotions/promotions.routes.js";
 import reviewsRoutes       from "./reviews/reviews.routes.js";
 import walletRoutes        from "./wallet/wallet.routes.js";
 import notificationsRoutes from "./notifications/notifications.routes.js";
+import reelsRoutes         from "./reels/reels.routes.js";
 
 dotenv.config();
 
@@ -54,6 +55,7 @@ app.use("/api/promotions",    promotionsRoutes);
 app.use("/api/reviews",       reviewsRoutes);
 app.use("/api/wallet",        walletRoutes);
 app.use("/api/notifications", notificationsRoutes);
+app.use("/api/reels",         reelsRoutes);
 
 // 404
 app.use((req, res) => {

@@ -71,7 +71,9 @@ export const ModelName = {
   Promotion: 'Promotion',
   Review: 'Review',
   Wallet: 'Wallet',
-  WalletTransaction: 'WalletTransaction'
+  WalletTransaction: 'WalletTransaction',
+  Reel: 'Reel',
+  ReelLike: 'ReelLike'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -423,6 +425,32 @@ export const WalletTransactionScalarFieldEnum = {
 } as const
 
 export type WalletTransactionScalarFieldEnum = (typeof WalletTransactionScalarFieldEnum)[keyof typeof WalletTransactionScalarFieldEnum]
+
+
+export const ReelScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  userId: 'userId',
+  videoUrl: 'videoUrl',
+  thumbnailUrl: 'thumbnailUrl',
+  title: 'title',
+  duration: 'duration',
+  views: 'views',
+  likesCount: 'likesCount',
+  commentsCount: 'commentsCount'
+} as const
+
+export type ReelScalarFieldEnum = (typeof ReelScalarFieldEnum)[keyof typeof ReelScalarFieldEnum]
+
+
+export const ReelLikeScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  reelId: 'reelId',
+  userId: 'userId'
+} as const
+
+export type ReelLikeScalarFieldEnum = (typeof ReelLikeScalarFieldEnum)[keyof typeof ReelLikeScalarFieldEnum]
 
 
 export const SortOrder = {

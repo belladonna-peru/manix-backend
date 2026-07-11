@@ -404,7 +404,9 @@ export const ModelName = {
   Promotion: 'Promotion',
   Review: 'Review',
   Wallet: 'Wallet',
-  WalletTransaction: 'WalletTransaction'
+  WalletTransaction: 'WalletTransaction',
+  Reel: 'Reel',
+  ReelLike: 'ReelLike'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -420,7 +422,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "moment" | "reaction" | "comment" | "friendRequest" | "friendship" | "locationShare" | "business" | "conversation" | "message" | "follow" | "product" | "productVariant" | "order" | "orderItem" | "stream" | "streamEvent" | "promotion" | "review" | "wallet" | "walletTransaction"
+    modelProps: "user" | "moment" | "reaction" | "comment" | "friendRequest" | "friendship" | "locationShare" | "business" | "conversation" | "message" | "follow" | "product" | "productVariant" | "order" | "orderItem" | "stream" | "streamEvent" | "promotion" | "review" | "wallet" | "walletTransaction" | "reel" | "reelLike"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1978,6 +1980,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Reel: {
+      payload: Prisma.$ReelPayload<ExtArgs>
+      fields: Prisma.ReelFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ReelFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ReelFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelPayload>
+        }
+        findFirst: {
+          args: Prisma.ReelFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ReelFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelPayload>
+        }
+        findMany: {
+          args: Prisma.ReelFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelPayload>[]
+        }
+        create: {
+          args: Prisma.ReelCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelPayload>
+        }
+        createMany: {
+          args: Prisma.ReelCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ReelCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelPayload>[]
+        }
+        delete: {
+          args: Prisma.ReelDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelPayload>
+        }
+        update: {
+          args: Prisma.ReelUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelPayload>
+        }
+        deleteMany: {
+          args: Prisma.ReelDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ReelUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ReelUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelPayload>[]
+        }
+        upsert: {
+          args: Prisma.ReelUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelPayload>
+        }
+        aggregate: {
+          args: Prisma.ReelAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateReel>
+        }
+        groupBy: {
+          args: Prisma.ReelGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ReelGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ReelCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ReelCountAggregateOutputType> | number
+        }
+      }
+    }
+    ReelLike: {
+      payload: Prisma.$ReelLikePayload<ExtArgs>
+      fields: Prisma.ReelLikeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ReelLikeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelLikePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ReelLikeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelLikePayload>
+        }
+        findFirst: {
+          args: Prisma.ReelLikeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelLikePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ReelLikeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelLikePayload>
+        }
+        findMany: {
+          args: Prisma.ReelLikeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelLikePayload>[]
+        }
+        create: {
+          args: Prisma.ReelLikeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelLikePayload>
+        }
+        createMany: {
+          args: Prisma.ReelLikeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ReelLikeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelLikePayload>[]
+        }
+        delete: {
+          args: Prisma.ReelLikeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelLikePayload>
+        }
+        update: {
+          args: Prisma.ReelLikeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelLikePayload>
+        }
+        deleteMany: {
+          args: Prisma.ReelLikeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ReelLikeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ReelLikeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelLikePayload>[]
+        }
+        upsert: {
+          args: Prisma.ReelLikeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReelLikePayload>
+        }
+        aggregate: {
+          args: Prisma.ReelLikeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateReelLike>
+        }
+        groupBy: {
+          args: Prisma.ReelLikeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ReelLikeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ReelLikeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ReelLikeCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2352,6 +2502,32 @@ export const WalletTransactionScalarFieldEnum = {
 export type WalletTransactionScalarFieldEnum = (typeof WalletTransactionScalarFieldEnum)[keyof typeof WalletTransactionScalarFieldEnum]
 
 
+export const ReelScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  userId: 'userId',
+  videoUrl: 'videoUrl',
+  thumbnailUrl: 'thumbnailUrl',
+  title: 'title',
+  duration: 'duration',
+  views: 'views',
+  likesCount: 'likesCount',
+  commentsCount: 'commentsCount'
+} as const
+
+export type ReelScalarFieldEnum = (typeof ReelScalarFieldEnum)[keyof typeof ReelScalarFieldEnum]
+
+
+export const ReelLikeScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  reelId: 'reelId',
+  userId: 'userId'
+} as const
+
+export type ReelLikeScalarFieldEnum = (typeof ReelLikeScalarFieldEnum)[keyof typeof ReelLikeScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -2606,6 +2782,8 @@ export type GlobalOmitConfig = {
   review?: Prisma.ReviewOmit
   wallet?: Prisma.WalletOmit
   walletTransaction?: Prisma.WalletTransactionOmit
+  reel?: Prisma.ReelOmit
+  reelLike?: Prisma.ReelLikeOmit
 }
 
 /* Types for Logging */

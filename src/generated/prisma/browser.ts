@@ -122,3 +122,13 @@ export type Wallet = Prisma.WalletModel
  * 
  */
 export type WalletTransaction = Prisma.WalletTransactionModel
+/**
+ * Model Reel
+ * 
+ */
+export type Reel = Prisma.ReelModel
+/**
+ * Model ReelLike
+ * 
+ */
+export type ReelLike = Prisma.ReelLikeModel
