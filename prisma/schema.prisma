@@ -67,6 +67,7 @@ model Moment {
   comments     Comment[]
   user         User       @relation(fields: [userId], references: [id])
   reactions    Reaction[]
+  savedBy      SavedMoment[]
 }
 
 model Reaction {
@@ -379,4 +380,14 @@ model ReelLike {
   reel      Reel     @relation(fields: [reelId], references: [id], onDelete: Cascade)
 
   @@unique([reelId, userId])
+}
+
+model SavedMoment {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  userId    String
+  momentId  String
+  moment    Moment   @relation(fields: [momentId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, momentId])
 }

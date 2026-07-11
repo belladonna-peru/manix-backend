@@ -132,3 +132,8 @@ export type Reel = Prisma.ReelModel
  * 
  */
 export type ReelLike = Prisma.ReelLikeModel
+/**
+ * Model SavedMoment
+ * 
+ */
+export type SavedMoment = Prisma.SavedMomentModel

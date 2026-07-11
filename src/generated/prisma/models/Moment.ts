@@ -263,6 +263,7 @@ export type MomentWhereInput = {
   comments?: Prisma.CommentListRelationFilter
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   reactions?: Prisma.ReactionListRelationFilter
+  savedBy?: Prisma.SavedMomentListRelationFilter
 }
 
 export type MomentOrderByWithRelationInput = {
@@ -279,6 +280,7 @@ export type MomentOrderByWithRelationInput = {
   comments?: Prisma.CommentOrderByRelationAggregateInput
   user?: Prisma.UserOrderByWithRelationInput
   reactions?: Prisma.ReactionOrderByRelationAggregateInput
+  savedBy?: Prisma.SavedMomentOrderByRelationAggregateInput
 }
 
 export type MomentWhereUniqueInput = Prisma.AtLeast<{
@@ -298,6 +300,7 @@ export type MomentWhereUniqueInput = Prisma.AtLeast<{
   comments?: Prisma.CommentListRelationFilter
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   reactions?: Prisma.ReactionListRelationFilter
+  savedBy?: Prisma.SavedMomentListRelationFilter
 }, "id">
 
 export type MomentOrderByWithAggregationInput = {
@@ -347,6 +350,7 @@ export type MomentCreateInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutMomentInput
   user: Prisma.UserCreateNestedOneWithoutMomentsInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutMomentInput
+  savedBy?: Prisma.SavedMomentCreateNestedManyWithoutMomentInput
 }
 
 export type MomentUncheckedCreateInput = {
@@ -362,6 +366,7 @@ export type MomentUncheckedCreateInput = {
   locationMode?: string | null
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutMomentInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutMomentInput
+  savedBy?: Prisma.SavedMomentUncheckedCreateNestedManyWithoutMomentInput
 }
 
 export type MomentUpdateInput = {
@@ -377,6 +382,7 @@ export type MomentUpdateInput = {
   comments?: Prisma.CommentUpdateManyWithoutMomentNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutMomentsNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutMomentNestedInput
+  savedBy?: Prisma.SavedMomentUpdateManyWithoutMomentNestedInput
 }
 
 export type MomentUncheckedUpdateInput = {
@@ -392,6 +398,7 @@ export type MomentUncheckedUpdateInput = {
   locationMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comments?: Prisma.CommentUncheckedUpdateManyWithoutMomentNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutMomentNestedInput
+  savedBy?: Prisma.SavedMomentUncheckedUpdateManyWithoutMomentNestedInput
 }
 
 export type MomentCreateManyInput = {
@@ -566,6 +573,20 @@ export type MomentUpdateOneRequiredWithoutCommentsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MomentUpdateToOneWithWhereWithoutCommentsInput, Prisma.MomentUpdateWithoutCommentsInput>, Prisma.MomentUncheckedUpdateWithoutCommentsInput>
 }
 
+export type MomentCreateNestedOneWithoutSavedByInput = {
+  create?: Prisma.XOR<Prisma.MomentCreateWithoutSavedByInput, Prisma.MomentUncheckedCreateWithoutSavedByInput>
+  connectOrCreate?: Prisma.MomentCreateOrConnectWithoutSavedByInput
+  connect?: Prisma.MomentWhereUniqueInput
+}
+
+export type MomentUpdateOneRequiredWithoutSavedByNestedInput = {
+  create?: Prisma.XOR<Prisma.MomentCreateWithoutSavedByInput, Prisma.MomentUncheckedCreateWithoutSavedByInput>
+  connectOrCreate?: Prisma.MomentCreateOrConnectWithoutSavedByInput
+  upsert?: Prisma.MomentUpsertWithoutSavedByInput
+  connect?: Prisma.MomentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MomentUpdateToOneWithWhereWithoutSavedByInput, Prisma.MomentUpdateWithoutSavedByInput>, Prisma.MomentUncheckedUpdateWithoutSavedByInput>
+}
+
 export type MomentCreateWithoutUserInput = {
   id?: string
   content: string
@@ -578,6 +599,7 @@ export type MomentCreateWithoutUserInput = {
   locationMode?: string | null
   comments?: Prisma.CommentCreateNestedManyWithoutMomentInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutMomentInput
+  savedBy?: Prisma.SavedMomentCreateNestedManyWithoutMomentInput
 }
 
 export type MomentUncheckedCreateWithoutUserInput = {
@@ -592,6 +614,7 @@ export type MomentUncheckedCreateWithoutUserInput = {
   locationMode?: string | null
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutMomentInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutMomentInput
+  savedBy?: Prisma.SavedMomentUncheckedCreateNestedManyWithoutMomentInput
 }
 
 export type MomentCreateOrConnectWithoutUserInput = {
@@ -648,6 +671,7 @@ export type MomentCreateWithoutReactionsInput = {
   locationMode?: string | null
   comments?: Prisma.CommentCreateNestedManyWithoutMomentInput
   user: Prisma.UserCreateNestedOneWithoutMomentsInput
+  savedBy?: Prisma.SavedMomentCreateNestedManyWithoutMomentInput
 }
 
 export type MomentUncheckedCreateWithoutReactionsInput = {
@@ -662,6 +686,7 @@ export type MomentUncheckedCreateWithoutReactionsInput = {
   lng?: number | null
   locationMode?: string | null
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutMomentInput
+  savedBy?: Prisma.SavedMomentUncheckedCreateNestedManyWithoutMomentInput
 }
 
 export type MomentCreateOrConnectWithoutReactionsInput = {
@@ -692,6 +717,7 @@ export type MomentUpdateWithoutReactionsInput = {
   locationMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comments?: Prisma.CommentUpdateManyWithoutMomentNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutMomentsNestedInput
+  savedBy?: Prisma.SavedMomentUpdateManyWithoutMomentNestedInput
 }
 
 export type MomentUncheckedUpdateWithoutReactionsInput = {
@@ -706,6 +732,7 @@ export type MomentUncheckedUpdateWithoutReactionsInput = {
   lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   locationMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comments?: Prisma.CommentUncheckedUpdateManyWithoutMomentNestedInput
+  savedBy?: Prisma.SavedMomentUncheckedUpdateManyWithoutMomentNestedInput
 }
 
 export type MomentCreateWithoutCommentsInput = {
@@ -720,6 +747,7 @@ export type MomentCreateWithoutCommentsInput = {
   locationMode?: string | null
   user: Prisma.UserCreateNestedOneWithoutMomentsInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutMomentInput
+  savedBy?: Prisma.SavedMomentCreateNestedManyWithoutMomentInput
 }
 
 export type MomentUncheckedCreateWithoutCommentsInput = {
@@ -734,6 +762,7 @@ export type MomentUncheckedCreateWithoutCommentsInput = {
   lng?: number | null
   locationMode?: string | null
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutMomentInput
+  savedBy?: Prisma.SavedMomentUncheckedCreateNestedManyWithoutMomentInput
 }
 
 export type MomentCreateOrConnectWithoutCommentsInput = {
@@ -764,6 +793,7 @@ export type MomentUpdateWithoutCommentsInput = {
   locationMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutMomentsNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutMomentNestedInput
+  savedBy?: Prisma.SavedMomentUpdateManyWithoutMomentNestedInput
 }
 
 export type MomentUncheckedUpdateWithoutCommentsInput = {
@@ -777,6 +807,83 @@ export type MomentUncheckedUpdateWithoutCommentsInput = {
   lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   locationMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reactions?: Prisma.ReactionUncheckedUpdateManyWithoutMomentNestedInput
+  savedBy?: Prisma.SavedMomentUncheckedUpdateManyWithoutMomentNestedInput
+}
+
+export type MomentCreateWithoutSavedByInput = {
+  id?: string
+  content: string
+  imageUrl?: string | null
+  location?: string | null
+  createdAt?: Date | string
+  expiresAt?: Date | string | null
+  lat?: number | null
+  lng?: number | null
+  locationMode?: string | null
+  comments?: Prisma.CommentCreateNestedManyWithoutMomentInput
+  user: Prisma.UserCreateNestedOneWithoutMomentsInput
+  reactions?: Prisma.ReactionCreateNestedManyWithoutMomentInput
+}
+
+export type MomentUncheckedCreateWithoutSavedByInput = {
+  id?: string
+  content: string
+  imageUrl?: string | null
+  location?: string | null
+  createdAt?: Date | string
+  userId: string
+  expiresAt?: Date | string | null
+  lat?: number | null
+  lng?: number | null
+  locationMode?: string | null
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutMomentInput
+  reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutMomentInput
+}
+
+export type MomentCreateOrConnectWithoutSavedByInput = {
+  where: Prisma.MomentWhereUniqueInput
+  create: Prisma.XOR<Prisma.MomentCreateWithoutSavedByInput, Prisma.MomentUncheckedCreateWithoutSavedByInput>
+}
+
+export type MomentUpsertWithoutSavedByInput = {
+  update: Prisma.XOR<Prisma.MomentUpdateWithoutSavedByInput, Prisma.MomentUncheckedUpdateWithoutSavedByInput>
+  create: Prisma.XOR<Prisma.MomentCreateWithoutSavedByInput, Prisma.MomentUncheckedCreateWithoutSavedByInput>
+  where?: Prisma.MomentWhereInput
+}
+
+export type MomentUpdateToOneWithWhereWithoutSavedByInput = {
+  where?: Prisma.MomentWhereInput
+  data: Prisma.XOR<Prisma.MomentUpdateWithoutSavedByInput, Prisma.MomentUncheckedUpdateWithoutSavedByInput>
+}
+
+export type MomentUpdateWithoutSavedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  locationMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.CommentUpdateManyWithoutMomentNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutMomentsNestedInput
+  reactions?: Prisma.ReactionUpdateManyWithoutMomentNestedInput
+}
+
+export type MomentUncheckedUpdateWithoutSavedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  locationMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutMomentNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutMomentNestedInput
 }
 
@@ -804,6 +911,7 @@ export type MomentUpdateWithoutUserInput = {
   locationMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comments?: Prisma.CommentUpdateManyWithoutMomentNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutMomentNestedInput
+  savedBy?: Prisma.SavedMomentUpdateManyWithoutMomentNestedInput
 }
 
 export type MomentUncheckedUpdateWithoutUserInput = {
@@ -818,6 +926,7 @@ export type MomentUncheckedUpdateWithoutUserInput = {
   locationMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comments?: Prisma.CommentUncheckedUpdateManyWithoutMomentNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutMomentNestedInput
+  savedBy?: Prisma.SavedMomentUncheckedUpdateManyWithoutMomentNestedInput
 }
 
 export type MomentUncheckedUpdateManyWithoutUserInput = {
@@ -840,11 +949,13 @@ export type MomentUncheckedUpdateManyWithoutUserInput = {
 export type MomentCountOutputType = {
   comments: number
   reactions: number
+  savedBy: number
 }
 
 export type MomentCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   comments?: boolean | MomentCountOutputTypeCountCommentsArgs
   reactions?: boolean | MomentCountOutputTypeCountReactionsArgs
+  savedBy?: boolean | MomentCountOutputTypeCountSavedByArgs
 }
 
 /**
@@ -871,6 +982,13 @@ export type MomentCountOutputTypeCountReactionsArgs<ExtArgs extends runtime.Type
   where?: Prisma.ReactionWhereInput
 }
 
+/**
+ * MomentCountOutputType without action
+ */
+export type MomentCountOutputTypeCountSavedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SavedMomentWhereInput
+}
+
 
 export type MomentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -886,6 +1004,7 @@ export type MomentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   comments?: boolean | Prisma.Moment$commentsArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   reactions?: boolean | Prisma.Moment$reactionsArgs<ExtArgs>
+  savedBy?: boolean | Prisma.Moment$savedByArgs<ExtArgs>
   _count?: boolean | Prisma.MomentCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["moment"]>
 
@@ -935,6 +1054,7 @@ export type MomentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   comments?: boolean | Prisma.Moment$commentsArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   reactions?: boolean | Prisma.Moment$reactionsArgs<ExtArgs>
+  savedBy?: boolean | Prisma.Moment$savedByArgs<ExtArgs>
   _count?: boolean | Prisma.MomentCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MomentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -950,6 +1070,7 @@ export type $MomentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     comments: Prisma.$CommentPayload<ExtArgs>[]
     user: Prisma.$UserPayload<ExtArgs>
     reactions: Prisma.$ReactionPayload<ExtArgs>[]
+    savedBy: Prisma.$SavedMomentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1359,6 +1480,7 @@ export interface Prisma__MomentClient<T, Null = never, ExtArgs extends runtime.T
   comments<T extends Prisma.Moment$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Moment$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   reactions<T extends Prisma.Moment$reactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Moment$reactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  savedBy<T extends Prisma.Moment$savedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Moment$savedByArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavedMomentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1844,6 +1966,30 @@ export type Moment$reactionsArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.ReactionScalarFieldEnum | Prisma.ReactionScalarFieldEnum[]
+}
+
+/**
+ * Moment.savedBy
+ */
+export type Moment$savedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SavedMoment
+   */
+  select?: Prisma.SavedMomentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SavedMoment
+   */
+  omit?: Prisma.SavedMomentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SavedMomentInclude<ExtArgs> | null
+  where?: Prisma.SavedMomentWhereInput
+  orderBy?: Prisma.SavedMomentOrderByWithRelationInput | Prisma.SavedMomentOrderByWithRelationInput[]
+  cursor?: Prisma.SavedMomentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SavedMomentScalarFieldEnum | Prisma.SavedMomentScalarFieldEnum[]
 }
 
 /**

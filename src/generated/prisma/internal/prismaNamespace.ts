@@ -406,7 +406,8 @@ export const ModelName = {
   Wallet: 'Wallet',
   WalletTransaction: 'WalletTransaction',
   Reel: 'Reel',
-  ReelLike: 'ReelLike'
+  ReelLike: 'ReelLike',
+  SavedMoment: 'SavedMoment'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -422,7 +423,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "moment" | "reaction" | "comment" | "friendRequest" | "friendship" | "locationShare" | "business" | "conversation" | "message" | "follow" | "product" | "productVariant" | "order" | "orderItem" | "stream" | "streamEvent" | "promotion" | "review" | "wallet" | "walletTransaction" | "reel" | "reelLike"
+    modelProps: "user" | "moment" | "reaction" | "comment" | "friendRequest" | "friendship" | "locationShare" | "business" | "conversation" | "message" | "follow" | "product" | "productVariant" | "order" | "orderItem" | "stream" | "streamEvent" | "promotion" | "review" | "wallet" | "walletTransaction" | "reel" | "reelLike" | "savedMoment"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2128,6 +2129,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    SavedMoment: {
+      payload: Prisma.$SavedMomentPayload<ExtArgs>
+      fields: Prisma.SavedMomentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SavedMomentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedMomentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SavedMomentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedMomentPayload>
+        }
+        findFirst: {
+          args: Prisma.SavedMomentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedMomentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SavedMomentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedMomentPayload>
+        }
+        findMany: {
+          args: Prisma.SavedMomentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedMomentPayload>[]
+        }
+        create: {
+          args: Prisma.SavedMomentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedMomentPayload>
+        }
+        createMany: {
+          args: Prisma.SavedMomentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SavedMomentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedMomentPayload>[]
+        }
+        delete: {
+          args: Prisma.SavedMomentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedMomentPayload>
+        }
+        update: {
+          args: Prisma.SavedMomentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedMomentPayload>
+        }
+        deleteMany: {
+          args: Prisma.SavedMomentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SavedMomentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SavedMomentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedMomentPayload>[]
+        }
+        upsert: {
+          args: Prisma.SavedMomentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedMomentPayload>
+        }
+        aggregate: {
+          args: Prisma.SavedMomentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSavedMoment>
+        }
+        groupBy: {
+          args: Prisma.SavedMomentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SavedMomentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SavedMomentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SavedMomentCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2528,6 +2603,16 @@ export const ReelLikeScalarFieldEnum = {
 export type ReelLikeScalarFieldEnum = (typeof ReelLikeScalarFieldEnum)[keyof typeof ReelLikeScalarFieldEnum]
 
 
+export const SavedMomentScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  userId: 'userId',
+  momentId: 'momentId'
+} as const
+
+export type SavedMomentScalarFieldEnum = (typeof SavedMomentScalarFieldEnum)[keyof typeof SavedMomentScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -2784,6 +2869,7 @@ export type GlobalOmitConfig = {
   walletTransaction?: Prisma.WalletTransactionOmit
   reel?: Prisma.ReelOmit
   reelLike?: Prisma.ReelLikeOmit
+  savedMoment?: Prisma.SavedMomentOmit
 }
 
 /* Types for Logging */

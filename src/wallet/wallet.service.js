@@ -159,6 +159,60 @@ export const donateToStreamer = async ({ userId, streamerId, amount, message }) 
   return { success: true, newBalance: wallet.balance - amount };
 };
 
+// ── Enviar dinero a otro usuario (el "Yape" de MANIX, sin comisión) ───────────
+
+export const sendMoney = async ({ userId, toUserId, toUsername, amount, note }) => {
+  if (amount <= 0) throw new Error("Monto inválido");
+  if (amount > 5000) throw new Error("Monto máximo: S/ 5,000");
+
+  // Resolver destinatario por id o por username (para QR / búsqueda)
+  let receiver = null;
+  if (toUserId) {
+    receiver = await prisma.user.findUnique({ where: { id: toUserId }, select: { id: true, username: true } });
+  } else if (toUsername) {
+    receiver = await prisma.user.findFirst({
+      where: { username: toUsername.replace(/^@/, "") },
+      select: { id: true, username: true },
+    });
+  }
+  if (!receiver) throw new Error("Destinatario no encontrado");
+  if (receiver.id === userId) throw new Error("No puedes enviarte dinero a ti mismo");
+
+  const wallet = await getOrCreateWallet(userId);
+  if (wallet.balance < amount) throw new Error("Saldo insuficiente");
+
+  const me = await prisma.user.findUnique({ where: { id: userId }, select: { username: true } });
+
+  // Débito
+  await prisma.wallet.update({
+    where: { id: wallet.id },
+    data: { balance: { decrement: amount }, totalSpent: { increment: amount } },
+  });
+  // Crédito
+  const rxWallet = await getOrCreateWallet(receiver.id);
+  await prisma.wallet.update({
+    where: { id: rxWallet.id },
+    data: { balance: { increment: amount }, totalEarned: { increment: amount } },
+  });
+
+  await prisma.walletTransaction.create({
+    data: {
+      walletId: wallet.id, type: "transfer_sent", amount: -amount,
+      description: (note ? "Envío · " + note : "Envío a @" + receiver.username),
+      referenceId: receiver.id, referenceType: "transfer", status: "completed",
+    },
+  });
+  await prisma.walletTransaction.create({
+    data: {
+      walletId: rxWallet.id, type: "transfer_received", amount,
+      description: (note ? "Recibido de @" + (me?.username || "usuario") + " · " + note : "Recibido de @" + (me?.username || "usuario")),
+      referenceId: userId, referenceType: "transfer", status: "completed",
+    },
+  });
+
+  return { success: true, newBalance: wallet.balance - amount, to: receiver.username };
+};
+
 // ── Canjear coins ────────────────────────────────────────────────────────────
 
 export const redeemCoins = async ({ userId, coins }) => {

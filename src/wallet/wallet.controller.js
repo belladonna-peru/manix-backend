@@ -1,4 +1,13 @@
-import { getWalletWithHistory, rechargeWallet, payBusiness, donateToStreamer, redeemCoins } from "./wallet.service.js";
+import { getWalletWithHistory, rechargeWallet, payBusiness, donateToStreamer, redeemCoins, sendMoney } from "./wallet.service.js";
+
+export const send = async (req, res) => {
+  try {
+    const result = await sendMoney({ userId: req.user.id, ...req.body });
+    res.json(result);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 
 export const myWallet = async (req, res) => {
   try {

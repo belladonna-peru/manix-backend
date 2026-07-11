@@ -1,6 +1,34 @@
-import { createMoment, getMoments } from "./moments.service.js";
+import { createMoment, getMoments, toggleSaveMoment, getSavedMoments, getLikedMoments } from "./moments.service.js";
 import { uploadToCloudinary } from "../middleware/upload.middleware.js";
 import { io } from "../server.js";
+
+// POST /moments/:id/save — guardar / quitar (toggle)
+export const save = async (req, res) => {
+  try {
+    const result = await toggleSaveMoment({ userId: req.user.id, momentId: req.params.id });
+    res.json(result);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+// GET /moments/saved
+export const saved = async (req, res) => {
+  try {
+    res.json(await getSavedMoments(req.user.id));
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+// GET /moments/liked
+export const liked = async (req, res) => {
+  try {
+    res.json(await getLikedMoments(req.user.id));
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 
 export const create = async (req, res) => {
   try {

@@ -73,7 +73,8 @@ export const ModelName = {
   Wallet: 'Wallet',
   WalletTransaction: 'WalletTransaction',
   Reel: 'Reel',
-  ReelLike: 'ReelLike'
+  ReelLike: 'ReelLike',
+  SavedMoment: 'SavedMoment'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -451,6 +452,16 @@ export const ReelLikeScalarFieldEnum = {
 } as const
 
 export type ReelLikeScalarFieldEnum = (typeof ReelLikeScalarFieldEnum)[keyof typeof ReelLikeScalarFieldEnum]
+
+
+export const SavedMomentScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  userId: 'userId',
+  momentId: 'momentId'
+} as const
+
+export type SavedMomentScalarFieldEnum = (typeof SavedMomentScalarFieldEnum)[keyof typeof SavedMomentScalarFieldEnum]
 
 
 export const SortOrder = {
