@@ -111,6 +111,11 @@ export const initSocket = (io) => {
       socket.to(conversationId).emit("message:reaction", reaction);
     });
 
+    // Mensaje eliminado: retransmitir
+    socket.on("message:deleted", ({ conversationId, messageId }) => {
+      socket.to(conversationId).emit("message:deleted", { messageId });
+    });
+
     socket.on("typing:start", ({ conversationId, user }) => {
       socket.to(conversationId).emit("typing:start", user);
     });

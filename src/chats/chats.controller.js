@@ -4,11 +4,21 @@ import {
   getMessages,
   createMessage,
   reactToMessage,
+  deleteMessage,
 } from "./chats.service.js";
 
 export const reactMessage = async (req, res) => {
   try {
     const result = await reactToMessage({ messageId: req.params.id, userId: req.user.id, emoji: req.body.emoji });
+    res.json(result);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+export const removeMessage = async (req, res) => {
+  try {
+    const result = await deleteMessage({ messageId: req.params.id, userId: req.user.id });
     res.json(result);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -74,6 +84,7 @@ export const sendMessage = async (req, res) => {
       duration:       req.body.duration,
       lat:            req.body.lat,
       lng:            req.body.lng,
+      replyToId:      req.body.replyToId,
     });
     res.status(201).json(message);
 

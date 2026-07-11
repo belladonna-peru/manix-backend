@@ -83,12 +83,13 @@ export const getMessages = async ({ conversationId, userId }) => {
     include: {
       sender: { select: userSelect },
       reactions: { select: { userId: true, emoji: true } },
+      replyTo: { select: { id: true, content: true, type: true, senderId: true, deleted: true } },
     },
     orderBy: { createdAt: "asc" },
   });
 };
 
-export const createMessage = async ({ conversationId, senderId, content, type = "text", mediaUrl = null, duration = null, lat = null, lng = null }) => {
+export const createMessage = async ({ conversationId, senderId, content, type = "text", mediaUrl = null, duration = null, lat = null, lng = null, replyToId = null }) => {
   // El texto no puede ir vacío; imagen/audio/ubicación no necesitan texto.
   if (type === "text" && (!content || content.trim().length < 1)) {
     throw new Error("El mensaje no puede estar vacío");
@@ -121,12 +122,23 @@ export const createMessage = async ({ conversationId, senderId, content, type = 
       duration: duration != null ? parseInt(duration, 10) : null,
       lat: lat != null ? parseFloat(lat) : null,
       lng: lng != null ? parseFloat(lng) : null,
+      replyToId,
     },
     include: {
       sender: { select: userSelect },
       reactions: { select: { userId: true, emoji: true } },
+      replyTo: { select: { id: true, content: true, type: true, senderId: true, deleted: true } },
     },
   });
+};
+
+// ── Eliminar un mensaje (para todos) ──
+export const deleteMessage = async ({ messageId, userId }) => {
+  const msg = await prisma.message.findFirst({ where: { id: messageId } });
+  if (!msg) throw new Error("Mensaje no encontrado");
+  if (msg.senderId !== userId) throw new Error("Solo puedes eliminar tus mensajes");
+  await prisma.message.update({ where: { id: messageId }, data: { deleted: true, content: "", mediaUrl: null } });
+  return { deleted: true, messageId };
 };
 // ── Reaccionar / quitar reacción a un mensaje (toggle) ──
 export const reactToMessage = async ({ messageId, userId, emoji }) => {
