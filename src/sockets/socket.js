@@ -106,6 +106,11 @@ export const initSocket = (io) => {
       socket.to(conversationId).emit("messages:read", { conversationId });
     });
 
+    // Reacción a un mensaje: retransmitir a la conversación en vivo
+    socket.on("message:reaction", ({ conversationId, reaction }) => {
+      socket.to(conversationId).emit("message:reaction", reaction);
+    });
+
     socket.on("typing:start", ({ conversationId, user }) => {
       socket.to(conversationId).emit("typing:start", user);
     });

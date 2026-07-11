@@ -3,7 +3,17 @@ import {
   getConversations,
   getMessages,
   createMessage,
+  reactToMessage,
 } from "./chats.service.js";
+
+export const reactMessage = async (req, res) => {
+  try {
+    const result = await reactToMessage({ messageId: req.params.id, userId: req.user.id, emoji: req.body.emoji });
+    res.json(result);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 import { notifyNewMessage } from "../notifications/notifications.service.js";
 import { uploadToCloudinary } from "../middleware/upload.middleware.js";
 import prisma from "../config/prisma.js";

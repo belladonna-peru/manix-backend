@@ -61,6 +61,8 @@ export const ModelName = {
   Business: 'Business',
   Conversation: 'Conversation',
   Message: 'Message',
+  MessageReaction: 'MessageReaction',
+  LocationRequest: 'LocationRequest',
   Follow: 'Follow',
   Product: 'Product',
   ProductVariant: 'ProductVariant',
@@ -253,6 +255,28 @@ export const MessageScalarFieldEnum = {
 } as const
 
 export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+
+
+export const MessageReactionScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  messageId: 'messageId',
+  userId: 'userId',
+  emoji: 'emoji'
+} as const
+
+export type MessageReactionScalarFieldEnum = (typeof MessageReactionScalarFieldEnum)[keyof typeof MessageReactionScalarFieldEnum]
+
+
+export const LocationRequestScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  fromId: 'fromId',
+  toId: 'toId',
+  status: 'status'
+} as const
+
+export type LocationRequestScalarFieldEnum = (typeof LocationRequestScalarFieldEnum)[keyof typeof LocationRequestScalarFieldEnum]
 
 
 export const FollowScalarFieldEnum = {

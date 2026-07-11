@@ -394,6 +394,8 @@ export const ModelName = {
   Business: 'Business',
   Conversation: 'Conversation',
   Message: 'Message',
+  MessageReaction: 'MessageReaction',
+  LocationRequest: 'LocationRequest',
   Follow: 'Follow',
   Product: 'Product',
   ProductVariant: 'ProductVariant',
@@ -423,7 +425,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "moment" | "reaction" | "comment" | "friendRequest" | "friendship" | "locationShare" | "business" | "conversation" | "message" | "follow" | "product" | "productVariant" | "order" | "orderItem" | "stream" | "streamEvent" | "promotion" | "review" | "wallet" | "walletTransaction" | "reel" | "reelLike" | "savedMoment"
+    modelProps: "user" | "moment" | "reaction" | "comment" | "friendRequest" | "friendship" | "locationShare" | "business" | "conversation" | "message" | "messageReaction" | "locationRequest" | "follow" | "product" | "productVariant" | "order" | "orderItem" | "stream" | "streamEvent" | "promotion" | "review" | "wallet" | "walletTransaction" | "reel" | "reelLike" | "savedMoment"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1164,6 +1166,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.MessageCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.MessageCountAggregateOutputType> | number
+        }
+      }
+    }
+    MessageReaction: {
+      payload: Prisma.$MessageReactionPayload<ExtArgs>
+      fields: Prisma.MessageReactionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MessageReactionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReactionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MessageReactionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReactionPayload>
+        }
+        findFirst: {
+          args: Prisma.MessageReactionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReactionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MessageReactionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReactionPayload>
+        }
+        findMany: {
+          args: Prisma.MessageReactionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReactionPayload>[]
+        }
+        create: {
+          args: Prisma.MessageReactionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReactionPayload>
+        }
+        createMany: {
+          args: Prisma.MessageReactionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MessageReactionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReactionPayload>[]
+        }
+        delete: {
+          args: Prisma.MessageReactionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReactionPayload>
+        }
+        update: {
+          args: Prisma.MessageReactionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReactionPayload>
+        }
+        deleteMany: {
+          args: Prisma.MessageReactionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MessageReactionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MessageReactionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReactionPayload>[]
+        }
+        upsert: {
+          args: Prisma.MessageReactionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReactionPayload>
+        }
+        aggregate: {
+          args: Prisma.MessageReactionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMessageReaction>
+        }
+        groupBy: {
+          args: Prisma.MessageReactionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MessageReactionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MessageReactionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MessageReactionCountAggregateOutputType> | number
+        }
+      }
+    }
+    LocationRequest: {
+      payload: Prisma.$LocationRequestPayload<ExtArgs>
+      fields: Prisma.LocationRequestFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LocationRequestFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LocationRequestFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>
+        }
+        findFirst: {
+          args: Prisma.LocationRequestFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LocationRequestFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>
+        }
+        findMany: {
+          args: Prisma.LocationRequestFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>[]
+        }
+        create: {
+          args: Prisma.LocationRequestCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>
+        }
+        createMany: {
+          args: Prisma.LocationRequestCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LocationRequestCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>[]
+        }
+        delete: {
+          args: Prisma.LocationRequestDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>
+        }
+        update: {
+          args: Prisma.LocationRequestUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>
+        }
+        deleteMany: {
+          args: Prisma.LocationRequestDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LocationRequestUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LocationRequestUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>[]
+        }
+        upsert: {
+          args: Prisma.LocationRequestUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>
+        }
+        aggregate: {
+          args: Prisma.LocationRequestAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLocationRequest>
+        }
+        groupBy: {
+          args: Prisma.LocationRequestGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LocationRequestGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LocationRequestCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LocationRequestCountAggregateOutputType> | number
         }
       }
     }
@@ -2404,6 +2554,28 @@ export const MessageScalarFieldEnum = {
 export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
 
 
+export const MessageReactionScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  messageId: 'messageId',
+  userId: 'userId',
+  emoji: 'emoji'
+} as const
+
+export type MessageReactionScalarFieldEnum = (typeof MessageReactionScalarFieldEnum)[keyof typeof MessageReactionScalarFieldEnum]
+
+
+export const LocationRequestScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  fromId: 'fromId',
+  toId: 'toId',
+  status: 'status'
+} as const
+
+export type LocationRequestScalarFieldEnum = (typeof LocationRequestScalarFieldEnum)[keyof typeof LocationRequestScalarFieldEnum]
+
+
 export const FollowScalarFieldEnum = {
   id: 'id',
   followerId: 'followerId',
@@ -2856,6 +3028,8 @@ export type GlobalOmitConfig = {
   business?: Prisma.BusinessOmit
   conversation?: Prisma.ConversationOmit
   message?: Prisma.MessageOmit
+  messageReaction?: Prisma.MessageReactionOmit
+  locationRequest?: Prisma.LocationRequestOmit
   follow?: Prisma.FollowOmit
   product?: Prisma.ProductOmit
   productVariant?: Prisma.ProductVariantOmit

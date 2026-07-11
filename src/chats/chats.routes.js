@@ -7,6 +7,7 @@ import {
   messagesList,
   sendMessage,
   uploadChatAudio,
+  reactMessage,
 } from "./chats.controller.js";
 
 const router = Router();
@@ -16,5 +17,6 @@ router.get("/", authMiddleware, conversationsList);
 router.get("/:conversationId/messages", authMiddleware, messagesList);
 router.post("/:conversationId/messages", authMiddleware, sendMessage);
 router.post("/upload-audio", authMiddleware, uploadAudio.single("audio"), uploadChatAudio);
+router.post("/messages/:id/react", authMiddleware, reactMessage);
 
 export default router;

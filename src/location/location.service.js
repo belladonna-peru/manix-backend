@@ -194,6 +194,68 @@ export const getMyShares = async (userId) => {
   };
 };
 
+// ═══════════════════════════════════════════════════════════════════════════════
+//  SOLICITUDES DE UBICACIÓN (estilo inDrive):
+//  A pide ver la ubicación de B → B recibe la solicitud → si acepta, se crea
+//  el share (owner=B, friend=A) y A empieza a ver a B en el mapa.
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export const createLocationRequest = async ({ fromId, toId }) => {
+  if (fromId === toId) throw new Error("No puedes pedirte tu propia ubicación");
+  const target = await prisma.user.findUnique({ where: { id: toId }, select: { id: true } });
+  if (!target) throw new Error("Usuario no encontrado");
+
+  // Si B ya comparte conmigo, no hace falta pedir
+  const already = await prisma.locationShare.findFirst({
+    where: { ownerId: toId, friendId: fromId, ...ACTIVE_SHARE },
+    select: { id: true },
+  });
+  if (already) return { alreadySharing: true };
+
+  const req = await prisma.locationRequest.upsert({
+    where: { fromId_toId: { fromId, toId } },
+    create: { fromId, toId, status: "pending" },
+    update: { status: "pending", createdAt: new Date() },
+  });
+  return { id: req.id, status: req.status };
+};
+
+export const getIncomingLocationRequests = async (userId) => {
+  const reqs = await prisma.locationRequest.findMany({
+    where: { toId: userId, status: "pending" },
+    orderBy: { createdAt: "desc" },
+  });
+  if (reqs.length === 0) return [];
+  const fromIds = reqs.map((r) => r.fromId);
+  const users = await prisma.user.findMany({
+    where: { id: { in: fromIds } },
+    select: { id: true, username: true, avatar: true, vibe: true },
+  });
+  const byId = Object.fromEntries(users.map((u) => [u.id, u]));
+  return reqs.map((r) => ({ id: r.id, createdAt: r.createdAt, from: byId[r.fromId] || { id: r.fromId } }));
+};
+
+export const respondLocationRequest = async ({ requestId, userId, accept, duration = "always" }) => {
+  const req = await prisma.locationRequest.findFirst({ where: { id: requestId } });
+  if (!req) throw new Error("Solicitud no encontrada");
+  if (req.toId !== userId) throw new Error("No autorizado");
+
+  if (!accept) {
+    await prisma.locationRequest.update({ where: { id: req.id }, data: { status: "declined" } });
+    return { declined: true, fromId: req.fromId };
+  }
+
+  // Aceptar → yo (toId) comparto mi ubicación con quien pidió (fromId)
+  const expiresAt = computeExpiry(duration);
+  await prisma.locationShare.upsert({
+    where: { ownerId_friendId: { ownerId: userId, friendId: req.fromId } },
+    create: { ownerId: userId, friendId: req.fromId, mode: "exact", duration, expiresAt, isActive: true },
+    update: { mode: "exact", duration, expiresAt, isActive: true },
+  });
+  await prisma.locationRequest.update({ where: { id: req.id }, data: { status: "accepted" } });
+  return { accepted: true, fromId: req.fromId };
+};
+
 // ─── Actualizar modo de ubicación ──────────────────────────────────────────────
 
 export const updateLocationMode = async ({ userId, locationMode }) => {

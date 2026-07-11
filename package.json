@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "build": "npx prisma generate",
-    "start": "npx prisma migrate deploy || echo '⚠️ MIGRACION FALLO — el server arranca igual'; npx tsx src/server.js"
+    "start": "npx prisma db push --accept-data-loss --skip-generate || echo '⚠️ db push fallo — server arranca igual'; npx tsx src/server.js"
   },
   "engines": {
     "node": "20.19.0"

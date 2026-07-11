@@ -82,6 +82,7 @@ export const getMessages = async ({ conversationId, userId }) => {
     where: { conversationId },
     include: {
       sender: { select: userSelect },
+      reactions: { select: { userId: true, emoji: true } },
     },
     orderBy: { createdAt: "asc" },
   });
@@ -123,6 +124,20 @@ export const createMessage = async ({ conversationId, senderId, content, type = 
     },
     include: {
       sender: { select: userSelect },
+      reactions: { select: { userId: true, emoji: true } },
     },
   });
+};
+// ── Reaccionar / quitar reacción a un mensaje (toggle) ──
+export const reactToMessage = async ({ messageId, userId, emoji }) => {
+  if (!emoji) throw new Error("Falta el emoji");
+  const existing = await prisma.messageReaction.findUnique({
+    where: { messageId_userId_emoji: { messageId, userId, emoji } },
+  });
+  if (existing) {
+    await prisma.messageReaction.delete({ where: { id: existing.id } });
+    return { messageId, emoji, userId, removed: true };
+  }
+  await prisma.messageReaction.create({ data: { messageId, userId, emoji } });
+  return { messageId, emoji, userId, added: true };
 };
